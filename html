@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sekolah Cerdas Berkualitas - Profil & SPMB Lengkap</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* ==================================== */
+        /* CSS DASAR & UMUM            */
+        /* ==================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f8f8;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: #17a2b8; 
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin-left: 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            cursor: pointer; /* Menandakan link yang interaktif (JS) */
+        }
+
+        .nav-menu a:hover, .nav-menu a.active-link {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-ppdb {
+            background-color: #ffc107; 
+            color: #333 !important;
+            padding: 8px 18px !important;
+            border-radius: 25px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+
+        .btn-ppdb:hover {
+            background-color: #e0a800;
+            transform: scale(1.05);
+        }
+
+        /* SECTION UMUM */
+        .section {
+            padding: 80px 50px;
+            text-align: center;
+            min-height: 60vh;
+        }
+
+        .bg-light {
+            background-color: #f8f9fa;
+        }
+
+        .section h2 {
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: #17a2b8;
+            border-bottom: 3px solid #ffc107;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://via.placeholder.com/1600x600.png?text=FOTO+GERBANG+SEKOLAH+MODERN') no-repeat center center/cover; 
+            color: white;
+            padding: 120px 20px;
+            min-height: 550px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 { font-size: 3em; margin-bottom: 15px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); }
+        .hero p { font-size: 1.5em; margin-bottom: 40px; font-weight: 300; }
+        .btn-primary {
+            background-color: #28a745; 
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover { background-color: #1e7e34; }
+
+        /* CARD STYLE (Program Unggulan) */
+        .content-flex {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            width: 30%; 
+            min-width: 280px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            transition: transform 0.3s;
+            border-top: 5px solid #17a2b8;
+        }
+        .card i { font-size: 2em; color: #ffc107; margin-bottom: 15px; display: block; }
+        .card:hover { transform: translateY(-8px); }
+
+        /* IMAGE CARD (Fasilitas & Guru) */
+        .image-card {
+            width: 23%;
+            min-width: 200px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .image-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .image-card-body { padding: 15px; }
+        .image-card-body h4 { margin-bottom: 5px; color: #333; }
+        .image-card-body p { font-size: 0.9em; color: #6c757d; }
+
+        /* ==================================== */
+        /* CSS SPMB KHUSUS            */
+        /* ==================================== */
+        .form-container, .ppdb-info-box {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        .form-group { margin-bottom: 20px; }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #17a2b8;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .btn-submit {
+            display: block;
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-submit:hover { background-color: #1e7e34; }
+
+        /* Syarat List */
+        .syarat-list ul { list-style: none; padding: 0; }
+        .syarat-list ul li {
+            padding: 12px 0;
+            border-bottom: 1px dashed #eee;
+            font-size: 1.05em;
+        }
+        .syarat-list ul li i { color: #28a745; margin-right: 10px; }
+        
+        /* Jadwal & Biaya Table */
+        .info-grid {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .jadwal-table, .biaya-table {
+            flex: 1;
+            min-width: 350px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        .jadwal-table table, .biaya-table table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .jadwal-table th, .biaya-table th {
+            background-color: #17a2b8;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        .jadwal-table td, .biaya-table td {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .biaya-table tr:nth-child(even) { background-color: #f8f8f8; }
+        .biaya-table .total-row {
+            font-weight: bold;
+            background-color: #ffc107;
+            color: #333;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #212529;
+            color: white;
+            padding: 40px 50px;
+        }
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .footer-col { flex: 1; min-width: 200px; }
+        .footer-col h4 {
+            border-bottom: 2px solid #ffc107;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            color: #ffc107;
+        }
+        .footer-col a {
+            display: block;
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 8px;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+        .footer-col a:hover { color: #17a2b8; }
+        .social-links a {
+            display: inline-block;
+            font-size: 1.5em;
+            margin-right: 15px;
+            color: white;
+        }
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.85em;
+        }
+
+        /* MEDIA QUERIES (RESPONSIVENESS) */
+        @media (max-width: 768px) {
+            .navbar { padding: 15px 20px; }
+            .nav-menu {
+                display: none; 
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 70px; 
+                left: 0;
+                background: #17a2b8;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            .nav-menu.active { display: flex; }
+            .nav-menu a {
+                margin: 0;
+                padding: 15px 20px;
+                text-align: left;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            .menu-toggle { display: block; }
+            .section { padding: 40px 20px; }
+            .card, .image-card { width: 90%; margin-bottom: 20px; }
+            .content-flex { flex-direction: column; align-items: center; }
+            .hero h1 { font-size: 2em; }
+            .footer-grid, .info-grid { flex-direction: column; }
+            .jadwal-table, .biaya-table { min-width: unset; }
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">SCB</div>
+        <nav class="nav-menu" id="main-nav">
+            <a data-content="home" class="active-link">Beranda</a>
+            <a data-content="profil">Profil</a>
+            <a data-content="akademik">Akademik</a>
+            <a data-content="fasilitas">Fasilitas</a>
+            <a data-content="guru">Guru</a>
+            <a data-content="kontak">Kontak</a>
+            <a data-content="daftar" class="btn-ppdb">SPMB 2025</a>
+        </nav>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <main id="main-content">
+        </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Sekolah Cerdas Berkualitas</h4>
+                <p>Mencetak generasi cerdas, berkarakter, dan siap berkolaborasi di masa depan.</p>
+                <div class="social-links" style="margin-top: 15px;">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Tautan Cepat</h4>
+                <a data-content="profil">Sejarah Sekolah</a>
+                <a data-content="akademik">Kurikulum</a>
+                <a data-content="fasilitas">Fasilitas</a>
+            </div>
+            <div class="footer-col">
+                <h4>Informasi SPMB</h4>
+                <a data-content="syarat">Syarat Pendaftaran</a>
+                <a data-content="jadwal">Jadwal & Biaya</a>
+                <a data-content="daftar">Formulir Pendaftaran</a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Sekolah Cerdas Berkualitas. Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Objek berisi konten HTML untuk setiap 'halaman'
+        const contentPages = {
+            // ====================================
+            // 1. BERANDA (HOME)
+            // ====================================
+            home: `
+                <section id="beranda" class="hero">
+                    <h1>Sekolah Cerdas Berkualitas 🎓</h1>
+                    <p>Mencetak generasi unggul, berkarakter, dan siap menghadapi tantangan global.</p>
+                    <a data-content="daftar" class="btn-primary">Daftar Sekarang!</a>
+                </section>
+                <section id="akademik-short" class="section">
+                    <h2>Program Unggulan Kami</h2>
+                    <div class="content-flex">
+                        <div class="card">
+                            <i class="fas fa-microscope"></i>
+                            <h3>STEM Terapan</h3>
+                            <p>Fokus pada Science, Technology, Engineering, and Mathematics melalui proyek nyata.</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-globe"></i>
+                            <h3>Kelas Bilingual</h3>
+                            <p>Pembelajaran menggunakan Bahasa Indonesia dan Inggris untuk komunikasi global.</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-hand-holding-heart"></i>
+                            <h3>Pendidikan Karakter</h3>
+                            <p>Program pengembangan moral dan etika terintegrasi dengan etika digital.</p>
+                        </div>
+                    </div>
+                </section>
+            `,
+
+            // ====================================
+            // 2. PROFIL (Tentang, Visi, Misi)
+            // ====================================
+            profil: `
+                <section id="profil" class="section bg-light">
+                    <h2>Tentang Sekolah</h2>
+                    <div style="max-width: 800px; margin: 0 auto; text-align: left;">
+                        <p style="font-size: 1.1em; margin-bottom: 30px;">Sekolah Cerdas Berkualitas (SCB) didirikan pada tahun 2015 dengan komitmen untuk memberikan pendidikan terbaik yang seimbang antara ilmu pengetahuan, teknologi, dan pembentukan karakter moral. Kami percaya setiap siswa memiliki potensi unik yang perlu dikembangkan dalam lingkungan yang suportif.</p>
+                        
+                        <h3 style="color: #17a2b8; margin-top: 30px;">Visi</h3>
+                        <p>Menjadi institusi pendidikan berbasis teknologi yang menghasilkan pemimpin masa depan berintegritas tinggi.</p>
+                        
+                        <h3 style="color: #17a2b8; margin-top: 30px;">Misi</h3>
+                        <ol style="margin: 20px 0; padding-left: 20px;">
+                            <li>Menerapkan kurikulum berbasis proyek (PjBL) yang inovatif.</li>
+                            <li>Menciptakan lingkungan belajar yang inklusif dan aman.</li>
+                            <li>Mengembangkan kompetensi digital pada setiap siswa dan guru.</li>
+                        </ol>
+                    </div>
+                </section>
+            `,
+            
+            // ====================================
+            // 3. AKADEMIK (Kurikulum & Program)
+            // ====================================
+            akademik: `
+                <section id="akademik" class="section">
+                    <h2>Kurikulum & Program Akademik</h2>
+                    <div style="max-width: 900px; margin: 0 auto; text-align: left;">
+                        <h3 style="color: #17a2b8; margin-bottom: 15px;">Kurikulum Inti</h3>
+                        <p>Kami menggunakan Kurikulum Merdeka yang diperkaya dengan modul khusus STEM dan Bahasa Inggris (CLIL - Content and Language Integrated Learning) untuk memastikan siswa tidak hanya menguasai teori, tetapi juga mampu mengaplikasikannya dalam konteks global.</p>
+                        
+                        <h3 style="color: #17a2b8; margin-top: 30px; margin-bottom: 20px;">Program Khusus</h3>
+                        <div class="content-flex">
+                            <div class="card" style="width: 45%; min-width: 300px;">
+                                <h3><i class="fas fa-laptop-code"></i> Coding & Robotika</h3>
+                                <p>Wajib bagi semua jenjang. Mempersiapkan siswa untuk era digital dengan logika pemrograman dasar hingga tingkat lanjut.</p>
+                            </div>
+                            <div class="card" style="width: 45%; min-width: 300px;">
+                                <h3><i class="fas fa-paint-brush"></i> Seni & Budaya</h3>
+                                <p>Mengembangkan kreativitas melalui kelas desain grafis, musik tradisional, dan seni rupa modern.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `,
+
+            // ====================================
+            // 4. FASILITAS
+            // ====================================
+            fasilitas: `
+                <section id="fasilitas" class="section bg-light">
+                    <h2>Fasilitas Sekolah 🛠️</h2>
+                    <div class="content-flex">
+                        <div class="image-card">
+                            <img src="lab sains.jpg" alt="Lab Sains">
+                            <div class="image-card-body">
+                                <h4>Laboratorium Sains Modern</h4>
+                                <p>Dilengkapi peralatan canggih untuk eksperimen fisika, kimia, dan biologi.</p>
+                            </div>
+                        </div>
+                        <div class="image-card">
+                            <img src="perpustakaan.jpg" alt="Perpustakaan">
+                            <div class="image-card-body">
+                                <h4>Perpustakaan Digital & Fisik</h4>
+                                <p>Koleksi buku lengkap, akses e-book, dan ruang baca yang nyaman.</p>
+                            </div>
+                        </div>
+                        <div class="image-card">
+                            <img src="lab komputer coding.jpg" alt="Ruang Komputer">
+                            <div class="image-card-body">
+                                <h4>Lab Komputer & Coding</h4>
+                                <p>Komputer spesifikasi tinggi untuk kelas pemrograman dan desain grafis.</p>
+                            </div>
+                        </div>
+                        <div class="image-card">
+                            <img src="lapangan olahraga.jpg" alt="Lapangan Olahraga">
+                            <div class="image-card-body">
+                                <h4>Area Olahraga Terpadu</h4>
+                                <p>Lapangan multifungsi untuk basket, futsal, dan area kebugaran siswa.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `,
+            
+            // ====================================
+            // 5. GURU (Tenaga Pendidik)
+            // ====================================
+            guru: `
+                <section id="guru" class="section">
+                    <h2>Meet Our Dedicated Teachers 🧑‍🏫</h2>
+                    <div class="content-flex">
+                        <div class="image-card">
+                            <img src="guru sains.jpg" alt="Guru Repa">
+                            <div class="image-card-body">
+                                <h4>Repa Julianti, S.Pd., M.Sc.</h4>
+                                <p>Guru Kimia & Koordinator STEM</p>
+                            </div>
+                        </div>
+                        <div class="image-card">
+                            <img src="guru b.inggris.jpg" alt="Guru Andi">
+                            <div class="image-card-body">
+                                <h4>Andi Wijaya, B.A., M.Ed.</h4>
+                                <p>Guru Bahasa Inggris & Wali Kelas 10</p>
+                            </div>
+                        </div>
+                        <div class="image-card">
+                            <img src="kepala sekolah.jpg" alt="Kepala Sekolah">
+                            <div class="image-card-body">
+                                <h4>Budi Santoso, M.Pd</h4>
+                                <p>Kepala Sekolah Cerdas Berkualitas</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `,
+            
+            // ====================================
+            // 6. KONTAK (Informasi & Peta)
+            // ====================================
+            kontak: `
+                <section id="kontak" class="section bg-light">
+                    <h2>Hubungi Kami 📞</h2>
+                    <p>Kami siap menjawab pertanyaan Anda. Kunjungi kami di alamat berikut:</p>
+                    <div style="max-width: 800px; margin: 30px auto;">
+                        <p><strong>Alamat:</strong> Jl. Inovasi No. 101, Kav. Pendidikan, Kota Maju, 14045</p>
+                        <p><strong>Telepon:</strong> (021) 1234 5678</p>
+                        <p><strong>Email:</strong> info@sekolahcerdasberkualitas.sch.id</p>
+                    </div>
+
+                    <iframe 
+                        src="http://googleusercontent.com/maps.google.com/3" 
+                        width="100%" height="450" style="border:0; margin-top: 30px;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                </section>
+            `,
+
+            // ====================================
+            // 7. DAFTAR SEKARANG (Formulir SPMB)
+            // ====================================
+            daftar: `
+                <section id="daftar" class="section">
+                    <h2>Formulir Pendaftaran Online 📝</h2>
+                    <div class="form-container">
+                        <form onsubmit="alert('Terima kasih! Formulir Anda telah terkirim.'); return false;">
+                            <h3 style="margin-bottom: 30px; color: #17a2b8;">Data Calon Siswa</h3>
+                            <div class="form-group">
+                                <label for="nama">Nama Lengkap Siswa</label>
+                                <input type="text" id="nama" name="nama" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="asal_sekolah">Asal Sekolah</label>
+                                <input type="text" id="asal_sekolah" name="asal_sekolah" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="jenjang">Jenjang Pendaftaran</label>
+                                <select id="jenjang" name="jenjang" required>
+                                    <option value="">-- Pilih Jenjang --</option>
+                                    <option value="SMP">SMP</option>
+                                    <option value="SMA">SMA</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="telepon">Nomor Telepon/WA Aktif</label>
+                                <input type="tel" id="telepon" name="telepon" required>
+                            </div>
+
+                            <button type="submit" class="btn-submit">Kirim Formulir Pendaftaran</button>
+                            <p style="text-align: center; margin-top: 15px; font-size: 0.9em; color: #6c757d;">Lihat <a data-content="syarat" style="color:#17a2b8; cursor:pointer;">Syarat Pendaftaran</a> sebelum mendaftar.</p>
+                        </form>
+                    </div>
+                </section>
+            `,
+
+            // ====================================
+            // 8. SYARAT PENDAFTARAN
+            // ====================================
+            syarat: `
+                <section id="syarat" class="section bg-light">
+                    <h2>Syarat Pendaftaran SPMB 📄</h2>
+                    <div class="form-container syarat-list">
+                        <p style="margin-bottom: 30px; font-size: 1.1em; color: #555;">Pastikan calon siswa memenuhi semua persyaratan dokumen dan kriteria akademik di bawah ini.</p>
+                        
+                        <h3>A. Persyaratan Umum</h3>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Berasal dari sekolah jenjang sebelumnya yang terakreditasi.</li>
+                            <li><i class="fas fa-check-circle"></i> Memiliki nilai rapor rata-rata minimal 80 pada 3 semester terakhir.</li>
+                            <li><i class="fas fa-check-circle"></i> Memiliki surat keterangan sehat dari dokter.</li>
+                        </ul>
+
+                        <h3>B. Dokumen yang Harus Disiapkan</h3>
+                        <ul>
+                            <li><i class="fas fa-file-alt"></i> Formulir pendaftaran online yang sudah dicetak.</li>
+                            <li><i class="fas fa-id-card"></i> Fotokopi Akta Kelahiran dan Kartu Keluarga (KK).</li>
+                            <li><i class="fas fa-book-open"></i> Fotokopi Rapor 3 semester terakhir yang sudah dilegalisir.</li>
+                            <li><i class="fas fa-image"></i> Pas foto berwarna terbaru ukuran 3x4 (2 lembar).</li>
+                        </ul>
+                        
+                        <a data-content="daftar" class="btn-primary" style="margin-top: 40px; text-decoration: none;">Lanjut ke Pendaftaran Online</a>
+                    </div>
+                </section>
+            `,
+            
+            // ====================================
+            // 9. JADWAL & BIAYA PENDIDIKAN
+            // ====================================
+            jadwal: `
+                <section id="jadwal" class="section">
+                    <h2>Jadwal & Biaya Pendidikan 📅💵</h2>
+                    <p style="margin-bottom: 50px; font-size: 1.1em; color: #555;">Rencanakan proses pendaftaran Anda sesuai jadwal dan ketahui rincian biaya pendidikan.</p>
+                    
+                    <div class="info-grid">
+                        
+                        <div class="jadwal-table">
+                            <h3 style="color: #17a2b8; margin-bottom: 20px;">Jadwal Seleksi SPMB 2025/2026</h3>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Kegiatan</th>
+                                        <th>Tanggal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr> <td>Pendaftaran Online Gelombang 1</td> <td>1 Nov - 30 Des 2025</td> </tr>
+                                    <tr> <td>Tes Potensi Akademik</td> <td>5 Jan 2026</td> </tr>
+                                    <tr> <td>Wawancara Orang Tua/Siswa</td> <td>6 - 7 Jan 2026</td> </tr>
+                                    <tr> <td>Pengumuman Kelulusan</td> <td>15 Jan 2026</td> </tr>
+                                    <tr> <td>Daftar Ulang Final</td> <td>16 - 31 Jan 2026</td> </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="biaya-table">
+                            <h3 style="color: #17a2b8; margin-bottom: 20px;">Rincian Biaya Pendidikan</h3>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Komponen Biaya</th>
+                                        <th>Jumlah (Rupiah)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr> <td>Uang Pendaftaran (Tidak kembali)</td> <td>Rp 500.000</td> </tr>
+                                    <tr> <td>Uang Pangkal/Gedung</td> <td>Rp 15.000.000</td> </tr>
+                                    <tr> <td>SPP Bulan Pertama</td> <td>Rp 1.500.000</td> </tr>
+                                    <tr> <td>Seragam dan Buku Paket</td> <td>Rp 2.000.000</td> </tr>
+                                    <tr class="total-row">
+                                        <td>Total Biaya Awal (Gelombang 1)</td>
+                                        <td>Rp 19.000.000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p style="margin-top: 20px; font-size: 0.9em; color: #999;">*Diberikan diskon 10% untuk pendaftaran di Gelombang 1.</p>
+                        </div>
+                    </div>
+                </section>
+            `
+        };
+
+        // ====================================
+        // JAVASCRIPT LOGIC
+        // ====================================
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navMenu = document.querySelector('.nav-menu');
+            const mainContent = document.getElementById('main-content');
+            const navLinks = document.querySelectorAll('[data-content]');
+            
+            // Fungsi untuk memuat konten
+            const loadContent = (contentKey) => {
+                const content = contentPages[contentKey];
+                if (content) {
+                    // Masukkan konten HTML ke dalam elemen main
+                    mainContent.innerHTML = content;
+                    
+                    // Kelola kelas aktif pada menu
+                    navLinks.forEach(link => link.classList.remove('active-link'));
+                    document.querySelector(`[data-content="${contentKey}"]`).classList.add('active-link');
+
+                    // Scroll ke atas halaman setelah memuat konten baru
+                    window.scrollTo(0, 0);
+
+                    // Re-attach listeners for internal links in the new content
+                    attachInternalListeners();
+                }
+            };
+            
+            // Fungsi untuk melampirkan listener ke tautan internal
+            const attachInternalListeners = () => {
+                // Cari semua tautan baru di konten yang baru dimuat
+                const internalLinks = mainContent.querySelectorAll('[data-content]');
+                internalLinks.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const key = e.currentTarget.getAttribute('data-content');
+                        loadContent(key);
+                        // Tutup menu mobile setelah klik (jika terbuka)
+                        if (navMenu.classList.contains('active')) {
+                            navMenu.classList.remove('active');
+                        }
+                    });
+                });
+            };
+
+            // Listener untuk menu utama (termasuk footer)
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const key = e.currentTarget.getAttribute('data-content');
+                    loadContent(key);
+                    // Tutup menu mobile setelah klik (jika terbuka)
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                    }
+                });
+            });
+
+            // Listener untuk Toggle menu mobile
+            mobileMenu.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+
+            // Muat halaman beranda saat pertama kali dimuat
+            loadContent('home'); 
+        });
+    </script>
+</body>
+</html>
